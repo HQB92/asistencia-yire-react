@@ -1,13 +1,252 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+html,
+body,
+html * {
+  font-family: "Roboto", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@import 'bootstrap/dist/css/bootstrap.min.css';
+body {
+  background-color: #152f4f;
+}
+
+.body-panddin{
+  padding: 0;
+}
+
+.header-p {
+  margin: 0px;
+  padding: 0px;
+  height: 11.3rem;
+  background-color: whitesmoke;
+}
+
+h1{
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.div {
+  display: flex;
+  text-align: right;
+  background-color: #152f4f;
+  min-height: 3rem;
+  align-items: center !important;
+  /*padding: 0 3px;*/
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255) !important;
+  justify-items: left;
+  vertical-align: middle;
+}
+
+.container-fluid{
+  min-height: 70vh;
+}
+
+.centrar-icon-text{
+  justify-items: center;
+
+  display: block !important;
+  align-items: center;
+}
+
+.div a{
+  text-decoration: none;
+  color: whitesmoke;
+  padding-left: 10px;
+}
+
+a{
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+a:hover{
+  font-weight: 500;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0,.45); 
+  color: #e4b021 !important;
+}
+
+.Col{
+  text-align: initial;
+}
+.bloqueo{
+  background-color: rgb(168, 165, 165) !important;
+  border:0;
+}
+.Col, .Col2 a{
+  text-decoration: none;
+  color: whitesmoke;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.Col2{
+  text-align: center;
+}
+
+.footer {
+    background: #152f4f;
+    color: whitesmoke;
+    /*position: fixed;*/
+   
+    width: 100%;
+  
+}
+
+.home a{
+  color: #152f4f ;
+}
+
+.home{
+  background-color: whitesmoke;
+  padding: 30px !important;
+}
+
+.pb-5 {
+  padding: 0 !important;
+}
+
+button{
+  border: 0 !important;
+}
+
+.navbar-light .navbar-toggler {
+  color: rgba(0,0,0,.0);
+}
+
+span{
+  color: whitesmoke !important;
+}
+
+.header {
+  min-height: 8rem;
+  text-align: right;
+  font-size: 12px;
+  font-family: Roboto;
+  font-weight: 400;
+  line-height: 24px;
+  background-color: #152f4f ;
+  color: whitesmoke;
+  z-index: 10000;
+}
+.btn{
+  min-width: 120px;
+}
+
+.menu2{
+  color: rgba(0,0,0,.55);
+}
+
+span {
+  text-align: center;
+  position: relative;
+}
+.notas {
+  top: 25%;
+  color: whitesmoke;
+}
+
+.ul {
+  top: 38%;
+  color: darkgray;
+}
+.navbar-toggler {
+  padding: none !important;
+}
+.logo {
+  position: relative;
+  padding-top: 1rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  align-items: center !important;
+  justify-items: center !important;
+  text-align: center !important;
+}
+
+.red-social {
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  padding: 4px;
+  margin-left: 10px;
+}
+.container-fluid{
+  padding:0;
+}
+.centrar-login{
+  min-height: 100%;
+  align-items: center !important;
+  max-width: 100% !important;
+  vertical-align: middle;
+
+}
+
+.barra-login{
+  text-align: center;
+  align-items: center;
+  color: whitesmoke;
+  zoom: 125%;
+  bottom: 0;
+  width: 100%;
+}
+.footer {
+  color: whitesmoke;
+  /*position: fixed;
+  bottom: 0;*/
+  width: 100%;
+  z-index: 3;
+}
+.btn-primary{
+  background-color: #e4b021 ;
+  border-color: #e47f21;
+}
+.btn-primary:hover{
+  background-color: #e47f21;
+  border-color: e4b021;
+}
+label{
+  color: whitesmoke;
+  zoom: 110%;
+}
+.footer .links ul {
+  list-style-type: none;
+}
+.footer .links li a {
+  color: white;
+  transition: color 0.2s;
+}
+.footer .links li a:hover {
+  text-decoration: none;
+  color: #4180cb;
+}
+.footer .about-company i {
+  font-size: 25px;
+}
+.footer .about-company a {
+  color: white;
+  transition: color 0.2s;
+}
+.footer .about-company a:hover {
+  color: #4180cb;
+}
+.footer .location i {
+  font-size: 18px;
+}
+.footer .copyright p {
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+.fluid-paddin{
+  padding-top: 1rem;
+}
+.col-especial:hover{
+  
+  box-shadow: 30px 30px 100px #999;
+  -webkit-box-shadow: 30px 30px 100px #999;
+  -moz-box-shadow: 30px 30px 100px #999;
 }
