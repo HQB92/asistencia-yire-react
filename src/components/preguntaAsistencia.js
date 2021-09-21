@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom'
 import { Form, Container, Button, Row, Col} from 'react-bootstrap';
-import { Link } from '@material-ui/core';
-
 const Pregunta= () =>{
 
     const [alumno, setAlumno] = useState([]);
@@ -96,7 +94,7 @@ const Pregunta= () =>{
                                     </Form.Group>
                                 </fieldset>
                                 <Row >
-                                    <Link to="www.yirelice.com"className="btn btn-primary" onClick={enviarAPI} href="">Guardar</Link>
+                                    <a href="./"><Button className="btn btn-primary" type="submit" >Guardar</Button></a>
                                 </Row>
                             </Row>
                         </Form>
