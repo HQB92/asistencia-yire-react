@@ -13,7 +13,9 @@ body {
 .body-panddin{
   padding: 0;
 }
-
+select{
+  margin-bottom: 2rem;
+}
 .header-p {
   margin: 0px;
   padding: 0px;

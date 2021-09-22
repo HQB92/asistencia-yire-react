@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, NavLink } from 'react-router-dom'
 import { Form, Container, Button, Row, Col} from 'react-bootstrap';
+import { Select } from '@material-ui/core';
 const Pregunta= () =>{
 
     const [alumno, setAlumno] = useState([]);
@@ -33,7 +34,6 @@ const Pregunta= () =>{
             body: cargaUtil
         });
         const exitoso = await resSql.json();
-        console.log(exitoso)
         if(exitoso){
             console.log("Guardado");
         }else{
@@ -50,7 +50,7 @@ const Pregunta= () =>{
                 <Row >
                     <Col xs={2} md={2}></Col>
                     <Col xs={8} md={8} >
-                        <Form onSubmit={enviarAPI}>
+                        <Form onSubmit={enviarAPI} href="https://yireliceo.com/">
                             <Form.Group className="mb-4" >
                                 <Form.Label>Nombres</Form.Label>
                                 <Form.Control className="bloqueo" disabled type="text" value={alumno.nombre}/>
@@ -69,32 +69,18 @@ const Pregunta= () =>{
                             </Form.Group>
                             <Row className="justify-content-md-center ">
                                 <Col md="auto"> <h4>¿El Alumno asistira presencialmente al establecimiento?</h4></Col>
-                                <fieldset>
+                            
                                     <Form.Group as={Row} className="mb-6">
-                                    <Form.Label as="legend" column sm={2}>
-                                    </Form.Label>
-                                    <Col sm={1} >
-                                        <Form.Check
-                                        type="radio"
-                                        label="SI"
-                                        name="respuesta"
-                                        value="SI"
-                                        checked={alumno.respuesta === "SI" ? true:false}
-                                        onChange={cambioRespuesta}
-                                        />
-                                        <Form.Check
-                                        type="radio"
-                                        label="NO"
-                                        name="respuesta"
-                                        value="NO"
-                                        checked={alumno.respuesta === "NO" ? true:false}
-                                        onChange={cambioRespuesta}
-                                        />
-                                    </Col>
+                                        <Form.Label as="legend" column sm={2}>
+                                            
+                                        </Form.Label>
+                                        <Form.Control as="select" name="respuesta"  onChange={cambioRespuesta}  >
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </Form.Control>
                                     </Form.Group>
-                                </fieldset>
                                 <Row >
-                                    <a href="./"><Button className="btn btn-primary" type="submit" >Guardar</Button></a>
+                                    <Button  type="submit" >Guardar</Button>
                                 </Row>
                             </Row>
                         </Form>
