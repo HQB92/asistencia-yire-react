@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { useParams, NavLink } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Form, Container, Button, Row, Col} from 'react-bootstrap';
-import { Select } from '@material-ui/core';
 const Pregunta= () =>{
 
     const [alumno, setAlumno] = useState([]);
     let rutalumno = useParams();
     const datosAPI = async(setAlumno)=>{
-        const data = await fetch(`https://portal.yireliceo.com/obtener_alumno_rut.php?rut=${rutalumno.rut}`)
+        const data = await fetch(`https://portal.yireliceo.com/API/obtener_alumno_rut.php?rut=${rutalumno.rut}`);
         const datoalumno = await data.json();
         setAlumno(datoalumno);
     }
@@ -28,8 +27,9 @@ const Pregunta= () =>{
 
     const enviarAPI = async(e)=>{
         e.preventDefault();
+        console.log(carga)
         const cargaUtil = JSON.stringify(carga);
-        const resSql = await fetch(`https://portal.yireliceo.com/guardar_respuesta_alumno.php`,{
+        const resSql = await fetch(`https://portal.yireliceo.com/API/guardar_respuesta_alumno.php`,{
             method: "POST",
             body: cargaUtil
         });
@@ -39,6 +39,9 @@ const Pregunta= () =>{
         }else{
             console.log("Error");
         }
+    }
+    const redireccionar = () =>{
+        window.location.href = "http://yireliceo.com";
     }
     return(
         alumno.rut ?
@@ -50,7 +53,7 @@ const Pregunta= () =>{
                 <Row >
                     <Col xs={2} md={2}></Col>
                     <Col xs={8} md={8} >
-                        <Form onSubmit={enviarAPI} href="https://yireliceo.com/">
+                        <Form onSubmit={enviarAPI}>
                             <Form.Group className="mb-4" >
                                 <Form.Label>Nombres</Form.Label>
                                 <Form.Control className="bloqueo" disabled type="text" value={alumno.nombre}/>
@@ -69,18 +72,17 @@ const Pregunta= () =>{
                             </Form.Group>
                             <Row className="justify-content-md-center ">
                                 <Col md="auto"> <h4>¿El Alumno asistira presencialmente al establecimiento?</h4></Col>
-                            
                                     <Form.Group as={Row} className="mb-6">
                                         <Form.Label as="legend" column sm={2}>
-                                            
                                         </Form.Label>
                                         <Form.Control as="select" name="respuesta"  onChange={cambioRespuesta}  >
+                                            <option > </option>
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </Form.Control>
                                     </Form.Group>
                                 <Row >
-                                    <Button  type="submit" >Guardar</Button>
+                                    <Button  type="submit" onClick={redireccionar}>Guardar</Button>
                                 </Row>
                             </Row>
                         </Form>
