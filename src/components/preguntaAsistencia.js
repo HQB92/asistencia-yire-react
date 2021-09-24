@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom'
-import { Form, Container, Button, Row, Col} from 'react-bootstrap';
+import { Form, Container, Button, Row, Col, Toast, ToastContainer} from 'react-bootstrap';
+
 const Pregunta= () =>{
 
     const [alumno, setAlumno] = useState([]);
@@ -9,6 +10,7 @@ const Pregunta= () =>{
         const data = await fetch(`https://portal.yireliceo.com/API/obtener_alumno_rut.php?rut=${rutalumno.rut}`);
         const datoalumno = await data.json();
         setAlumno(datoalumno);
+        
     }
     useEffect(() => {
         const aux = datosAPI(setAlumno)
@@ -24,29 +26,57 @@ const Pregunta= () =>{
             [e.target.name]: e.target.value
         });
     }
-
+    const [show, setShow] = useState(false);
+    const [toast, setToast] = useState({
+        variante:'',
+        mensaje:'',
+        titulo:''
+    })
     const enviarAPI = async(e)=>{
-        e.preventDefault();
-        console.log(carga)
-        const cargaUtil = JSON.stringify(carga);
-        const resSql = await fetch(`https://portal.yireliceo.com/API/guardar_respuesta_alumno.php`,{
-            method: "POST",
-            body: cargaUtil
-        });
-        const exitoso = await resSql.json();
-        if(exitoso){
-            console.log("Guardado");
+        if(carga.respuesta === "SI" || carga.respuesta === "NO"){
+            e.preventDefault();
+            const cargaUtil = JSON.stringify(carga);
+            const resSql = await fetch(`https://portal.yireliceo.com/API/guardar_respuesta_alumno.php`,{
+                method: "POST",
+                body: cargaUtil
+            });
+            const exitoso = await resSql.json();
+            if(exitoso){
+                toast.variante='success';
+                toast.mensaje="Datos Guardado Exitosamente";
+                toast.titulo="Guardado";
+                setShow(true);
+            }else{
+                toast.variante='danger';
+                toast.mensaje="Error al intentar guardar los datos";
+                toast.titulo="ERROR";
+                setShow(true);
+            }
         }else{
-            console.log("Error");
+            toast.variante='warning';
+            toast.mensaje="Falta responder pregunta";
+            toast.titulo="Advertencia";
+            setShow(true);
         }
     }
-    const redireccionar = () =>{
-        window.location.href = "http://yireliceo.com";
-    }
+    function redireccionarPagina() {
+        window.location = "https://www.bufa.es";
+      }
+    
+    /*const redireccionar = () =>{
+        if (carga.respuesta === "SI" || carga.respuesta === "NO"){
+            
+           /* setTimeout("redireccionarPagina()", 5000);
+        }else{
+
+        }
+           // window.location.href = "http://yireliceo.com";
+       
+    }*/
     return(
         alumno.rut ?
-            !alumno.respuesta  ?
-            <Container fluid="md" className="justify-content-md-center barra-login">
+        !alumno.respuesta || alumno.respuesta === "" ?
+        <Container fluid="md" className="justify-content-md-center barra-login">
                 <Row className="justify-content-md-center barra-login">
                     <Col md="auto"> <h2>Asistencia Presencial a Clase</h2></Col>
                 </Row>
@@ -76,19 +106,29 @@ const Pregunta= () =>{
                                         <Form.Label as="legend" column sm={2}>
                                         </Form.Label>
                                         <Form.Control as="select" name="respuesta"  onChange={cambioRespuesta}  >
-                                            <option > </option>
+                                            <option value="vacio"> </option>
                                             <option value="SI">SI</option>
                                             <option value="NO">NO</option>
                                         </Form.Control>
                                     </Form.Group>
                                 <Row >
-                                    <Button  type="submit" onClick={redireccionar}>Guardar</Button>
+                                    <Button  type="submit">Guardar</Button>
                                 </Row>
                             </Row>
                         </Form>
                     </Col>
                     <Col xs={4} md={2}></Col>
                 </Row>
+                    <ToastContainer position="bottom-center" className="p-3">
+                        <Toast bg={toast.variante} onClose={() => setShow(false)} show={show} delay={5000} autohide>
+                        <Toast.Header>
+                            <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+                            <strong className="me-auto">{toast.titulo}</strong>
+                            <small className="text-muted">Ahora</small>
+                        </Toast.Header>
+                        <Toast.Body >{toast.mensaje}</Toast.Body>
+                        </Toast>
+                    </ToastContainer>
             </Container>
             :
             <Container fluid="md" className="justify-content-md-center barra-login">
