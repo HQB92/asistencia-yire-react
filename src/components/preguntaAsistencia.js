@@ -14,6 +14,10 @@ const Pregunta= () =>{
     }
     useEffect(() => {
         const aux = datosAPI(setAlumno)
+        toast.variante='warning';
+        toast.mensaje="Falta responder pregunta";
+        toast.titulo="Advertencia";
+        setShow(true);
     },[]);
 
     const [carga, setCarga] = useState({
@@ -46,33 +50,19 @@ const Pregunta= () =>{
                 toast.mensaje="Datos Guardado Exitosamente";
                 toast.titulo="Guardado";
                 setShow(true);
+                setTimeout(redireccionarPagina(),6000);
             }else{
                 toast.variante='danger';
                 toast.mensaje="Error al intentar guardar los datos";
                 toast.titulo="ERROR";
                 setShow(true);
             }
-        }else{
-            toast.variante='warning';
-            toast.mensaje="Falta responder pregunta";
-            toast.titulo="Advertencia";
-            setShow(true);
         }
     }
     function redireccionarPagina() {
-        window.location = "https://www.bufa.es";
+        window.location = "https://www.yireliceo.com";
       }
-    
-    /*const redireccionar = () =>{
-        if (carga.respuesta === "SI" || carga.respuesta === "NO"){
-            
-           /* setTimeout("redireccionarPagina()", 5000);
-        }else{
 
-        }
-           // window.location.href = "http://yireliceo.com";
-       
-    }*/
     return(
         alumno.rut ?
         !alumno.respuesta || alumno.respuesta === "" ?
