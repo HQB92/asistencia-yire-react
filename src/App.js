@@ -2,9 +2,10 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Footer from './components/footer';
 import { Container } from 'react-bootstrap';
-import AsisAlumno from './components/asis-alumno'
-import Pregunta from './components/preguntaAsistencia';
+import AsisAlumno from './components/inicio/asis-alumno';
+import Pregunta from './components/pregunta/preguntaAsistencia';
 import Navegacion from './components/navegacion';
+
 function App() {
   return (
     <Container fluid className="body-panddin">

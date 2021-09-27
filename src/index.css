@@ -9,7 +9,12 @@ html * {
 body {
   background-color: #152f4f;
 }
+.toasttext{
+  color: rgb(39, 38, 38);
+  font-size: 2vh;
+  font-weight: bold;
 
+}
 .body-panddin{
   padding: 0;
 }
@@ -67,7 +72,7 @@ a{
 
 a:hover{
   font-weight: 500;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0,.45); 
+  text-shadow: 3px 3px 10px rgba(0, 0, 0,.45);
   color: #e4b021 !important;
 }
 
@@ -93,9 +98,7 @@ a:hover{
     background: #152f4f;
     color: whitesmoke;
     /*position: fixed;*/
-   
     width: 100%;
-  
 }
 
 .home a{
@@ -113,6 +116,7 @@ a:hover{
 
 button{
   border: 0 !important;
+  width: 200px;
 }
 
 .navbar-light .navbar-toggler {
@@ -134,10 +138,6 @@ span{
   color: whitesmoke;
   z-index: 10000;
 }
-.btn{
-  min-width: 120px;
-}
-
 .menu2{
   color: rgba(0,0,0,.55);
 }
@@ -193,7 +193,7 @@ span {
   text-align: center;
   align-items: center;
   color: whitesmoke;
-  zoom: 125%;
+  zoom: 110%;
   bottom: 0;
   width: 100%;
 }
@@ -205,8 +205,8 @@ span {
   z-index: 3;
 }
 .btn-primary{
-  background-color: #e4b021 ;
-  border-color: #e47f21;
+  background-color: #e4b021 !important;
+  border-color: #e47f21 !important;
 }
 .btn-primary:hover{
   background-color: #e47f21;
@@ -247,7 +247,6 @@ label{
   padding-top: 1rem;
 }
 .col-especial:hover{
-  
   box-shadow: 30px 30px 100px #999;
   -webkit-box-shadow: 30px 30px 100px #999;
   -moz-box-shadow: 30px 30px 100px #999;

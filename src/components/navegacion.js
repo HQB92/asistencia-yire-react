@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo  from '../img/header-footer/logo-yire.png';
 import { Navbar, Container} from 'react-bootstrap';
+
 const Navegacion= () =>{
     return(
         <div>
@@ -10,10 +11,10 @@ const Navegacion= () =>{
               <img
                 alt=""
                 src={Logo}
-                width="130px"
-                height="130px" />
+                width="100px"
+                height="100px" />
             </Navbar.Brand>
-            <h3>Corporación Educacional YIRE</h3>
+            <h5>Corporación Educacional YIRE</h5>
             </Container>
             </Navbar>
         </div>
