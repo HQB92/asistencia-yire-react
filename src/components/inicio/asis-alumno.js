@@ -24,7 +24,7 @@ const AsisAlumno= () =>{
                             <Form.Control type="text" id="rut" name="rut" placeholder="11111111-1" onChange={rutChange}/>
                         </Form.Group>
                     </Form>
-                    <Button to={`/pregunta/${rut}`} className="button btn btn-primary">Ingresar</Button>
+                    <Link to={`/pregunta/${rut}`} className="button btn btn-primary">Ingresar</Link>
                 </Col>
                 <Col xs={4} md={2}></Col>
             </Row>

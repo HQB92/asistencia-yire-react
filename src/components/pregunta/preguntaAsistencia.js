@@ -74,6 +74,7 @@ const Pregunta= () =>{
     }
 
     const [validar, setValidar] = useState([]);
+    console.log(carga.rut)
     if (!alumno.respuesta || alumno.respuesta === "" ) {
         validar.titulo="RUT INVALIDO";
         validar.mensaje="ERROR RUT NO EXISTE EN LA BASE DE DATOS";
@@ -85,7 +86,7 @@ const Pregunta= () =>{
    
 
     return(
-        alumno.rut ?
+        !carga.rut ?
         !alumno.respuesta || alumno.respuesta === "" ?
         <Container fluid="md" className="justify-content-md-center barra-login">
                 <Row className="justify-content-md-center barra-login">
@@ -137,9 +138,25 @@ const Pregunta= () =>{
                     </ToastContainer>
             </Container>
             :
-            <Validacion titulo={validar.titulo} mensaje={validar.mensaje}></Validacion>
+            
+            <Container fluid="md" className="justify-content-md-center barra-login">
+                <Row className="justify-content-md-center barra-login">
+                    <Col md="auto"> <h2>Respuesta ya registrada</h2></Col>
+                </Row>
+                <Row className="justify-content-md-center barra-login">
+                    <Col md="auto"> <h5>para cambiar su respuesta comunicarse con su profesor jefe</h5></Col>
+                </Row>
+            </Container>
         :
-        <Validacion titulo={validar.titulo} mensaje={validar.mensaje}></Validacion>
+        <Container fluid="md" className="justify-content-md-center barra-login">
+                <Row className="justify-content-md-center barra-login">
+                    <Col md="auto"> <h2>RUT INVALIDO</h2></Col>
+                </Row>
+                <Row className="justify-content-md-center barra-login">
+                    <Col md="auto"> <h5>ERROR RUT NO EXISTE EN LA BASE DE DATOS</h5></Col>
+                </Row>
+            </Container>
+        
     )
 }
 
