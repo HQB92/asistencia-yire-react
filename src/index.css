@@ -204,6 +204,9 @@ span {
   width: 100%;
   z-index: 3;
 }
+.btn{
+  min-width: 120px;
+}
 .btn-primary{
   background-color: #e4b021 !important;
   border-color: #e47f21 !important;

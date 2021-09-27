@@ -16,7 +16,7 @@ const Pregunta= () =>{
     useEffect(() => {
         const aux = datosAPI(setAlumno)
         toast.variante='warning';
-        toast.mensaje="Falta responder pregunta";
+        toast.mensaje="Solo podra responder una sola vez por mes";
         toast.titulo="Advertencia";
         setShow(true);
     },[]);
