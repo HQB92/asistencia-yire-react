@@ -14,7 +14,7 @@ const Navegacion= () =>{
                 width="100px"
                 height="100px" />
             </Navbar.Brand>
-            <h5>Corporación Educacional YIRE</h5>
+            <h6>Corporación Educacional YIRE</h6>
             </Container>
             </Navbar>
         </div>

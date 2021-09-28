@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom'
-import { Form, Container, Button, Row, Col, Toast, ToastContainer} from 'react-bootstrap';
+import { Form, Container, Button, Row, Col, Toast, ToastContainer, Modal} from 'react-bootstrap';
 import Validacion from './validacion';
 
-const Pregunta= () =>{
 
+const Pregunta= () =>{
+    const [loanding, setLoanding] = useState(false);
     const [alumno, setAlumno] = useState([]);
     let rutalumno = useParams();
     const datosAPI = async(setAlumno)=>{
@@ -14,7 +15,9 @@ const Pregunta= () =>{
     }
 
     useEffect(() => {
+        setLoanding(true);
         const aux = datosAPI(setAlumno)
+        setTimeout((()=>{setLoanding(false)}),5000)
         toast.variante='warning';
         toast.mensaje="Solo podra responder una sola vez por mes";
         toast.titulo="Advertencia";
@@ -54,7 +57,6 @@ const Pregunta= () =>{
                 toast.mensaje="Datos Guardado Exitosamente";
                 toast.titulo="Guardado";
                 setShow(true);
-
                 await setTimeout(redireccionarPagina(),5000);
             }else{
                 toast.variante='danger';
@@ -73,21 +75,26 @@ const Pregunta= () =>{
         window.location = "https://www.yireliceo.com";
     }
 
-    const [validar, setValidar] = useState([]);
-    console.log(carga.rut)
-    if (!alumno.respuesta || alumno.respuesta === "" ) {
-        validar.titulo="RUT INVALIDO";
-        validar.mensaje="ERROR RUT NO EXISTE EN LA BASE DE DATOS";
-    }
-    if (!alumno.rut) {
-        validar.titulo="Respuesta ya registrada";
-        validar.mensaje="para cambiar su respuesta comunicarse con su profesor jefe";
-    }
-   
-
+  
     return(
-        !carga.rut ?
-        !alumno.respuesta || alumno.respuesta === "" ?
+        loanding ? 
+        <Modal
+        show={show}
+        onHide={() => setShow(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="example-custom-modal-styling-title">
+                    Cargando...
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Validacion/>
+            </Modal.Body>
+        </Modal>:
+        alumno.rut !== ""?
+        alumno.respuesta === "" || alumno.respuesta === null ?
         <Container fluid="md" className="justify-content-md-center barra-login">
                 <Row className="justify-content-md-center barra-login">
                     <Col md="auto"> <h3>Asistencia Presencial a Clase</h3></Col>
@@ -138,7 +145,6 @@ const Pregunta= () =>{
                     </ToastContainer>
             </Container>
             :
-            
             <Container fluid="md" className="justify-content-md-center barra-login">
                 <Row className="justify-content-md-center barra-login">
                     <Col md="auto"> <h2>Respuesta ya registrada</h2></Col>

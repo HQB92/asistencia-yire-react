@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import{Link} from 'react-router-dom'
 import { Form, Container, Row, Col} from 'react-bootstrap';
-import Button from '@restart/ui/esm/Button';
 
 const AsisAlumno= () =>{
     const [rut, rutAlumno]= useState('');

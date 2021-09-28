@@ -15,6 +15,9 @@ body {
   font-weight: bold;
 
 }
+.spiner_hugo{
+  color: #152f4f;
+}
 .body-panddin{
   padding: 0;
 }
@@ -136,7 +139,7 @@ span{
   line-height: 24px;
   background-color: #152f4f ;
   color: whitesmoke;
-  z-index: 10000;
+  z-index: 1;
 }
 .menu2{
   color: rgba(0,0,0,.55);
