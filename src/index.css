@@ -35,7 +35,14 @@ h1{
   font-size: 50px;
   font-weight: bold;
 }
-
+.alert-danger {
+  color: #842029 !important;
+  background-color: #781e1ebf;
+  border-color: #b53a46;
+}
+.alert {
+  margin-top: 1rem;
+}
 .div {
   display: flex;
   text-align: right;
@@ -119,7 +126,7 @@ a:hover{
 
 button{
   border: 0 !important;
-  width: 200px;
+  width: 120px;
 }
 
 .navbar-light .navbar-toggler {
@@ -208,7 +215,7 @@ span {
   z-index: 3;
 }
 .btn{
-  min-width: 120px;
+  min-width: 120px !important;
 }
 .btn-primary{
   background-color: #e4b021 !important;
