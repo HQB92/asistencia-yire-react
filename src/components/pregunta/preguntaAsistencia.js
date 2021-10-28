@@ -18,11 +18,9 @@ const Pregunta = ({ loading: loadingContext, setLoading: setLoadingContext, hist
         }
     }
     useEffect(() => {
-        console.log(".............------")
-        console.log(alumno)
+
         if (!!alumno && apiCalled) {
             setLoadingContext(false)
-            console.log(alumno.respuesta)
             if(alumno.respuesta !== null){
                 toast.variante = 'primary';
                 toast.mensaje = "Usted ya respondio la encuesta";

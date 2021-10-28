@@ -24,7 +24,7 @@ const AsisAlumno = ({ setLoading, history }) => {
     return (
         <Container fluid="md" className="justify-content-md-center barra-login">
             <Row className="justify-content-md-center barra-login">
-                <Col md="auto"> <h3>Asistencia Presencial a Clase Octubre</h3></Col>
+                <Col md="auto"> <h3>Asistencia Presencial a Clase Noviembre</h3></Col>
             </Row>
             <Row >
                 <Col xs={2} md={2}></Col>
