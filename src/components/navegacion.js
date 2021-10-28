@@ -8,11 +8,11 @@ const Navegacion= () =>{
             <Navbar  collapseOnSelect expand="lg" >
             <Container className="header fluid">
             <Navbar.Brand href="/" >
-              <img
+              {<img
                 alt=""
                 src={Logo}
                 width="100px"
-                height="100px" />
+                height="100px" />}
             </Navbar.Brand>
             <h6>Corporación Educacional YIRE</h6>
             </Container>

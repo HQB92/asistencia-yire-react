@@ -15,8 +15,6 @@ const Validacion= () =>{
                 <Row className="justify-content-md-center barra-login">
                     <h5>Cargando datos...</h5>
                 </Row>
-               
-    
             </Container>
     )
 }
