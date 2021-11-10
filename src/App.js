@@ -12,20 +12,6 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [cache, setCache] = useState(true);
 
-  function emptyCache(){
-    if('caches' in window){
-    caches.keys().then((names) => {
-            names.forEach(name => {
-                caches.delete(name);
-                setCache(false);
-            })
-            
-        });
-        setCache(false)
-        window.location.reload(false);
-    }
-  }  
-
   useEffect(() => {
     setCache(true)
   }, []);

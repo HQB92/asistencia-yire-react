@@ -9,7 +9,7 @@ const Pregunta = ({ loading: loadingContext, setLoading: setLoadingContext, hist
     let rutalumno = useParams();
     const datosAPI = async (setAlumno) => {
         try {
-            const data = await fetch(`https://portal.yireliceo.com/API/obtener_alumno_rut.php?rut=${rutalumno.rut}`);
+            const data = await fetch(`https://yireliceo.com/portal/API/obtener_alumno_rut_matricula.php?rut=${rutalumno.rut}`);
             const datoalumno = await data.json();
             setAlumno(datoalumno);
             setApiCalled(true)
@@ -38,15 +38,17 @@ const Pregunta = ({ loading: loadingContext, setLoading: setLoadingContext, hist
                 setTimeout(redireccionarPagina2(),5000);
             }
         }
+         // eslint-disable-next-line
     }, [alumno, apiCalled])
     useEffect(() => {
         // setLoanding(true);
         datosAPI(setAlumno)
         // setTimeout((() => { setLoanding(false) }), 5000)
         toast.variante = 'warning';
-        toast.mensaje = "Solo podra responder una sola vez por mes";
+        toast.mensaje = "Solo podra responder una sola vez.";
         toast.titulo = "Advertencia";
         setShow(true);
+         // eslint-disable-next-line
     }, []);
 
     const [carga, setCarga] = useState({
@@ -62,7 +64,7 @@ const Pregunta = ({ loading: loadingContext, setLoading: setLoadingContext, hist
     }
 
     const [show, setShow] = useState(false);
-    const [toast, setToast] = useState({
+    const [toast,] = useState({
         variante: '',
         mensaje: '',
         titulo: ''
@@ -72,7 +74,7 @@ const Pregunta = ({ loading: loadingContext, setLoading: setLoadingContext, hist
         e.preventDefault();
         if (carga.respuesta === "SI" || carga.respuesta === "NO") {
             const cargaUtil = JSON.stringify(carga);
-            const resSql = await fetch(`https://portal.yireliceo.com/API/guardar_respuesta_alumno.php`, {
+            const resSql = await fetch(`https://portal.yireliceo.com/API/guardar_confir_matricula.php`, {
                 method: "POST",
                 body: cargaUtil
             });
@@ -108,7 +110,7 @@ const Pregunta = ({ loading: loadingContext, setLoading: setLoadingContext, hist
         (
                 <Container fluid="md" className="justify-content-md-center barra-login">
                     <Row className="justify-content-md-center barra-login">
-                        <Col md="auto"> <h3>Asistencia Presencial a Clase</h3></Col>
+                        <Col md="auto"> <h3>Confirmación Matrícula 2022</h3></Col>
                     </Row>
                     <Row >
                         <Col xs={1} md={3}></Col>
@@ -126,15 +128,11 @@ const Pregunta = ({ loading: loadingContext, setLoading: setLoadingContext, hist
                                     <Form.Label>Rut</Form.Label>
                                     <Form.Control className="bloqueo" disabled type="text" value={alumno.rut} name="rut" onChange={cambioRespuesta} />
                                 </Form.Group>
-                                <Form.Group className="mb-4" >
-                                    <Form.Label>Curso</Form.Label>
-                                    <Form.Control className="bloqueo" disabled type="text" value={alumno.curso} />
-                                </Form.Group>
-                                <Col> <h5>¿El Alumno asistira presencialmente al establecimiento?</h5></Col>
+                                <Col> <h5>¿El Alumno Continuará el año 2022 en el Establecimiento?</h5></Col>
                                 <Form.Group className="mb-4">
                                     <Form.Label as="legend" >
                                     </Form.Label>
-                                    <Form.Control as="select" name="respuesta" onChange={cambioRespuesta}  >
+                                    <Form.Control as="select"  name="respuesta" onChange={cambioRespuesta}  >
                                         <option value="vacio"> </option>
                                         <option value="SI">SI</option>
                                         <option value="NO">NO</option>

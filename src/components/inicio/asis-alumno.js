@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter, history } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Form, Container, Row, Col, Alert, Button } from 'react-bootstrap';
 
 
@@ -24,14 +24,14 @@ const AsisAlumno = ({ setLoading, history }) => {
     return (
         <Container fluid="md" className="justify-content-md-center barra-login">
             <Row className="justify-content-md-center barra-login">
-                <Col md="auto"> <h3>Asistencia Presencial a Clase Noviembre</h3></Col>
+                <Col md="auto"> <h3>Confirmación Matrícula 2022</h3></Col>
             </Row>
             <Row >
                 <Col xs={2} md={2}></Col>
                 <Col xs={8} md={8} >
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-5" >
-                            <Form.Label>Ingresear Rut Alumno</Form.Label>
+                            <Form.Label>Ingresar Rut Alumno</Form.Label>
                             <Form.Control type="text" id="rut" name="rut" placeholder="11111111-1" onChange={rutChange} />
                         </Form.Group>
                         <Button type={"submit"}>Ingresar</Button>
