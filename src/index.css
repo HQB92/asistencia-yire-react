@@ -31,6 +31,10 @@ select{
   background-color: whitesmoke;
 }
 
+.select_matricula{
+  margin-bottom: 0 !important;
+
+}
 h1{
   font-size: 50px;
   font-weight: bold;
@@ -242,6 +246,19 @@ label{
 }
 .footer .about-company i {
   font-size: 25px;
+}
+
+.row{
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+.input-group-text {
+  color: #212529 !important;
+}
+.input-group-text {
+  color: gray !important;
+  min-width: 68px !important;
+  height: 100%;
 }
 .footer .about-company a {
   color: white;
